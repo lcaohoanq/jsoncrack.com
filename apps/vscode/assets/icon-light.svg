@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" color="#424242" viewBox="0 0 600 600" fill="none">
-  <path d="M240 300 C 320 300, 320 160, 400 160" stroke="currentColor" stroke-width="50" stroke-linecap="round"/>
-  <path d="M240 300 C 320 300, 320 440, 400 440" stroke="currentColor" stroke-width="50" stroke-linecap="round"/>
-  <rect x="60" y="220" width="180" height="160" rx="32" fill="currentColor"/>
-  <rect x="400" y="80" width="160" height="160" rx="32" fill="currentColor"/>
-  <rect x="400" y="360" width="160" height="160" rx="32" fill="currentColor"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" color="#424242" viewBox="0 0 600 600"><path stroke="currentColor" stroke-linecap="round" stroke-width="50" d="M240 300 C 320 300, 320 160, 400 160"/><path stroke="currentColor" stroke-linecap="round" stroke-width="50" d="M240 300 C 320 300, 320 440, 400 440"/><rect width="180" height="160" x="60" y="220" fill="currentColor" rx="32"/><rect width="160" height="160" x="400" y="80" fill="currentColor" rx="32"/><rect width="160" height="160" x="400" y="360" fill="currentColor" rx="32"/></svg>
