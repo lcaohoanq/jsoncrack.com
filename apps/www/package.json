@@ -10,6 +10,7 @@
     "start": "next start",
     "lint": "tsc --project tsconfig.json && eslint src && prettier --check src",
     "lint:fix": "eslint --fix src && prettier --write src",
+    "test": "vitest run",
     "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
@@ -62,7 +63,8 @@
     "prettier": "^3.9.6",
     "ts-node": "^10.9.2",
     "typescript": "5.9.3",
-    "typescript-eslint": "^8.67.0"
+    "typescript-eslint": "^8.67.0",
+    "vitest": "^3.2.7"
   },
   "packageManager": "pnpm@10.20.0"
 }

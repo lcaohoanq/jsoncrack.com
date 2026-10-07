@@ -3,23 +3,26 @@ import { Group, Text } from "@mantine/core";
 import { Dropzone } from "@mantine/dropzone";
 import toast from "react-hot-toast";
 import { VscCircleSlash, VscFiles } from "react-icons/vsc";
-import { FileFormat } from "../../enums/file.enum";
 import useFile from "../../store/useFile";
 
 export const FullscreenDropzone = () => {
-  const setContents = useFile(state => state.setContents);
+  const openFiles = useFile(state => state.openFiles);
 
   return (
     <Dropzone.FullScreen
-      maxFiles={1}
-      accept={["application/json", "application/x-yaml", "text/csv", "application/xml"]}
+      accept={[
+        "application/json",
+        "application/x-yaml",
+        "application/yaml",
+        "text/yaml",
+        "text/csv",
+        "application/xml",
+        "text/xml",
+      ]}
       onReject={files => toast.error(`Unable to load file ${files[0].file.name}`)}
-      onDrop={async e => {
+      onDrop={async files => {
         try {
-          const fileContent = await e[0].text();
-          let fileExtension = e[0].name.split(".").pop() as FileFormat | undefined;
-          if (!fileExtension) fileExtension = FileFormat.JSON;
-          setContents({ contents: fileContent, format: fileExtension, hasChanges: false });
+          await openFiles(files);
         } catch (err) {
           toast.error("An error occurred while reading the file.");
           console.error(err);
