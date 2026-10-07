@@ -288,6 +288,9 @@ importers:
       typescript-eslint:
         specifier: ^8.67.0
         version: 8.67.0(eslint@10.8.1(jiti@1.21.7))(typescript@5.9.3)
+      vitest:
+        specifier: ^3.2.7
+        version: 3.2.7(@types/node@25.9.5)(jiti@1.21.7)(lightningcss@1.33.0)(terser@5.46.0)
 
   packages/jsoncrack-react:
     dependencies:

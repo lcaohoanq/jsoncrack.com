@@ -14,6 +14,7 @@ import { SEO } from "../constants/seo";
 import { darkTheme, lightTheme } from "../constants/theme";
 import { BottomBar } from "../features/editor/BottomBar";
 import { FullscreenDropzone } from "../features/editor/FullscreenDropzone";
+import { TabBar } from "../features/editor/TabBar";
 import { Toolbar } from "../features/editor/Toolbar";
 import useGraph from "../features/editor/views/GraphView/stores/useGraph";
 import useConfig from "../store/useConfig";
@@ -148,6 +149,7 @@ const EditorPage = () => {
                   visible={!fullscreen}
                 >
                   <StyledTextEditor>
+                    <TabBar />
                     <BottomBar />
                     <TextEditor />
                   </StyledTextEditor>

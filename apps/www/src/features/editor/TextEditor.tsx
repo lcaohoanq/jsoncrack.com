@@ -23,10 +23,11 @@ const editorOptions: EditorProps["options"] = {
 const TextEditor = () => {
   const monaco = useMonaco();
   const contents = useFile(state => state.contents);
+  const activeTabId = useFile(state => state.activeTabId);
   const setContents = useFile(state => state.setContents);
   const setError = useFile(state => state.setError);
   const jsonSchema = useFile(state => state.jsonSchema);
-  const getHasChanges = useFile(state => state.getHasChanges);
+  const getHasUnsavedTabs = useFile(state => state.getHasUnsavedTabs);
   const theme = useConfig(state => (state.darkmodeEnabled ? "vs-dark" : "light"));
   const fileType = useFile(state => state.format);
   const jsonDefaults = (monaco?.languages as any)?.json?.jsonDefaults as
@@ -53,7 +54,7 @@ const TextEditor = () => {
 
   React.useEffect(() => {
     const beforeunload = (e: BeforeUnloadEvent) => {
-      if (getHasChanges()) {
+      if (getHasUnsavedTabs()) {
         const confirmationMessage =
           "Unsaved changes, if you leave before saving  your changes will be lost";
 
@@ -67,7 +68,7 @@ const TextEditor = () => {
     return () => {
       window.removeEventListener("beforeunload", beforeunload);
     };
-  }, [getHasChanges]);
+  }, [getHasUnsavedTabs]);
 
   const handleMount: OnMount = useCallback(editor => {
     editor.onDidPaste(() => {
@@ -81,11 +82,12 @@ const TextEditor = () => {
         <Editor
           height="100%"
           language={fileType}
+          path={`file:///jsoncrack/${activeTabId}`}
           theme={theme}
           value={contents}
           options={editorOptions}
           onMount={handleMount}
-          onValidate={errors => setError(errors[0]?.message || "")}
+          onValidate={errors => setError(errors[0]?.message || null, activeTabId)}
           onChange={contents => setContents({ contents, skipUpdate: true })}
           loading={<LoadingOverlay visible />}
         />
